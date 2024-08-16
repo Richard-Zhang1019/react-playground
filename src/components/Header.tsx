@@ -1,21 +1,11 @@
-import { useContext } from 'react'
-import { Box, Flex, Img } from '@chakra-ui/react'
+import { Box, Center, Flex, Img } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { AiFillGithub } from 'react-icons/ai'
-import { BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs'
 
-import AyuDarkImg from '@/assets/img/ayu-dark.png'
-import useIsDark from '@/hooks/useIsDark'
-import ThemeColorContext from '@/contexts/ThemeColor'
+import Icon from '@/assets/img/logo_dark.svg'
 
 const Header = () => {
   const navigate = useNavigate()
-  const isDark = useIsDark()
-  const { setThemeColor } = useContext(ThemeColorContext)
-
-  const toggleThemeColor = () => {
-    setThemeColor(isDark ? 'theme-light' : 'theme-dark')
-  }
 
   return (
     <Flex
@@ -26,37 +16,23 @@ const Header = () => {
       fontSize={18}
       borderBottom="1px solid #8a898923"
     >
-      <Box
+      <Flex
         px={4}
         cursor="pointer"
         onClick={() => {
           navigate('/')
         }}
       >
-        <Img
-          src={AyuDarkImg}
-          opacity={0.8}
-          _hover={{ opacity: 1 }}
-          color="white"
-          w={50}
-          h={50}
-        />
-      </Box>
+        <Img src={Icon} w={40} h={40} />
+        <Center marginLeft={8} fontWeight={700} fontSize={20}>React Playground</Center>
+      </Flex>
 
       <Flex gap={18} mr={10} mt={10}>
-        <Box cursor="pointer" onClick={toggleThemeColor}>
-          {isDark ? (
-            <BsFillSunFill size={22} />
-          ) : (
-            <BsFillMoonStarsFill size={22} />
-          )}
-        </Box>
-
         <Box
           cursor="pointer"
           onClick={() => {
             window.open(
-              'https://github.com/richard-zhang1019/yu-react-template',
+              'https://github.com/Richard-Zhang1019/react-playground',
               'blank'
             )
           }}
